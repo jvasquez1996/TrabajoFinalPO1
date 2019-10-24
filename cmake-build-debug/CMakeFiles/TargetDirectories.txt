@@ -1,0 +1,3 @@
+D:/UTEC/Ciclo 2/CS/TranbajoFinal/cmake-build-debug/CMakeFiles/TranbajoFinal.dir
+D:/UTEC/Ciclo 2/CS/TranbajoFinal/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/UTEC/Ciclo 2/CS/TranbajoFinal/cmake-build-debug/CMakeFiles/rebuild_cache.dir
