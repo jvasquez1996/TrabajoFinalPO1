@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "D:/UTEC/Ciclo 2/CS/TranbajoFinal/CTexto.cpp" "D:/UTEC/Ciclo 2/CS/TranbajoFinal/cmake-build-debug/CMakeFiles/TranbajoFinal.dir/CTexto.cpp.obj"
   "D:/UTEC/Ciclo 2/CS/TranbajoFinal/main.cpp" "D:/UTEC/Ciclo 2/CS/TranbajoFinal/cmake-build-debug/CMakeFiles/TranbajoFinal.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

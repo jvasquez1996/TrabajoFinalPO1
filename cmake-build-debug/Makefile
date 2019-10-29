@@ -122,6 +122,33 @@ TranbajoFinal/fast:
 	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/build
 .PHONY : TranbajoFinal/fast
 
+CTexto.obj: CTexto.cpp.obj
+
+.PHONY : CTexto.obj
+
+# target to build an object file
+CTexto.cpp.obj:
+	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/CTexto.cpp.obj
+.PHONY : CTexto.cpp.obj
+
+CTexto.i: CTexto.cpp.i
+
+.PHONY : CTexto.i
+
+# target to preprocess a source file
+CTexto.cpp.i:
+	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/CTexto.cpp.i
+.PHONY : CTexto.cpp.i
+
+CTexto.s: CTexto.cpp.s
+
+.PHONY : CTexto.s
+
+# target to generate assembly for a file
+CTexto.cpp.s:
+	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/CTexto.cpp.s
+.PHONY : CTexto.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -158,6 +185,9 @@ help:
 	@echo ... TranbajoFinal
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... CTexto.obj
+	@echo ... CTexto.i
+	@echo ... CTexto.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

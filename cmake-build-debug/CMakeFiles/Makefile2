@@ -70,7 +70,7 @@ CMAKE_BINARY_DIR = "D:\UTEC\Ciclo 2\CS\TranbajoFinal\cmake-build-debug"
 CMakeFiles/TranbajoFinal.dir/all:
 	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/depend
 	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\UTEC\Ciclo 2\CS\TranbajoFinal\cmake-build-debug\CMakeFiles" --progress-num=1,2 "Built target TranbajoFinal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="D:\UTEC\Ciclo 2\CS\TranbajoFinal\cmake-build-debug\CMakeFiles" --progress-num=1,2,3 "Built target TranbajoFinal"
 .PHONY : CMakeFiles/TranbajoFinal.dir/all
 
 # Include target in all.
@@ -80,7 +80,7 @@ all: CMakeFiles/TranbajoFinal.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/TranbajoFinal.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "D:\UTEC\Ciclo 2\CS\TranbajoFinal\cmake-build-debug\CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\UTEC\Ciclo 2\CS\TranbajoFinal\cmake-build-debug\CMakeFiles" 3
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/TranbajoFinal.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "D:\UTEC\Ciclo 2\CS\TranbajoFinal\cmake-build-debug\CMakeFiles" 0
 .PHONY : CMakeFiles/TranbajoFinal.dir/rule

@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/UTEC/Ciclo 2/CS/TranbajoFinal/CTexto.cpp">
+			<Option target="TranbajoFinal"/>
+		</Unit>
+		<Unit filename="D:/UTEC/Ciclo 2/CS/TranbajoFinal/CTexto.h">
+			<Option target="TranbajoFinal"/>
+		</Unit>
 		<Unit filename="D:/UTEC/Ciclo 2/CS/TranbajoFinal/main.cpp">
 			<Option target="TranbajoFinal"/>
 		</Unit>
