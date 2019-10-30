@@ -5,8 +5,6 @@
 #include <shlobj.h>
 #include <sstream>
 #include <algorithm>
-
-
 using namespace std;
 typedef int number;
 typedef bool boleano;
@@ -18,7 +16,7 @@ static int CALLBACK BrowseCallbackProc(HWND hwnd,UINT uMsg, LPARAM lParam, LPARA
     if(uMsg == BFFM_INITIALIZED)
     {
         string tmp = (const char *) lpData;
-        cout << "path: " << tmp << std::endl;
+        //cout << "path: " << tmp << std::endl;
         SendMessage(hwnd, BFFM_SETSELECTION, TRUE, lpData);
     }
 
@@ -32,7 +30,7 @@ string BrowseFolder(string saved_path)
     const wchar_t * path_param = wsaved_path.c_str();
 
     BROWSEINFO bi = { 0 };
-    bi.lpszTitle  = ("Browse for folder...");
+    bi.lpszTitle  = ("Eliga donde guardar el archivo.");
     bi.ulFlags    = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
     bi.lpfn       = BrowseCallbackProc;
     bi.lParam     = (LPARAM) path_param;
@@ -57,7 +55,6 @@ string BrowseFolder(string saved_path)
 
     return "";
 }
-
 void PrintText( string ruta){
     string line;
     ifstream myfile (ruta);
@@ -72,12 +69,14 @@ void PrintText( string ruta){
     }
     else cout << "Unable to open file";
 }
-
 void justificar(string ruta){
 
     ifstream myfile( ruta );
     unsigned max_size = 0;
     string line;
+    ofstream outfile;
+    string path=BrowseFolder("D:'\'");
+    outfile.open(path+"\\justificar.txt", fstream::in | fstream::out | fstream::trunc);
 
     if (myfile.is_open())
     {
@@ -92,12 +91,35 @@ void justificar(string ruta){
 
         while ( getline (myfile,line) )
         {
+            auto posini=[](string stringvalues,int pos){
+                if(pos==1){
+                    for(int i=0; i<stringvalues.length();i++){
+                        if(stringvalues[i]!=' '){
+                            return  i;
+                        }
+                    }
+                }
+                if(pos==2){
+                    for(int i=stringvalues.length()-1; i>=0;i--){
+                        if(stringvalues[i]!=' '){
+                            return  i;
+                        }
+                    }
+                }
+            };
+
+            int inichar=posini(line,1);
+            int finish=posini(line,2);
+            line=line.substr(inichar,finish-inichar+1);
+
             if(line.size()==max_size){
                 //mismo numero de max_size
-                cout<<line<<"\n";
+                outfile << line << '\n';
+                //cout<<line<<"\n";
             }
             else if (line.size()>70){
                 //mayores a 70 caracteres pero diferente de el max.
+
                 unsigned need_space = max_size - line.size();
                 unsigned count_space = count( line.begin(), line.end(), ' ' );
 
@@ -109,23 +131,112 @@ void justificar(string ruta){
                     iss >> temp;
                     temp_line +=  temp + "  ";
                 }
-                iss.get();  // get rid of a single space in the iss stream
-                // extracts the rest of the iss stream:
+                iss.get();
                 temp_line.append(  istreambuf_iterator<char>( iss ), istreambuf_iterator<char>() );
+                outfile << temp_line << '\n';
                 cout  << temp_line << '\n';
            }
             else{
                 //menores de 70 caracteres
+                outfile << line << '\n';
                 cout<<line<<"\n";
             }
         }
         myfile.close();
+        outfile.close();
         cout<<"\n";
     }
     else cout << "Unable to open file";
 }
+void alinear(string ruta ,int opcion){
+    string tipoalinear="";
+    if(opcion==1){
+        tipoalinear="derecha";
+    }else if(opcion==2){
+        tipoalinear="izquierda";
+    }else{
+        tipoalinear="centro";
+    }
+    ifstream myfile( ruta );
+    unsigned max_size = 0;
+    string line;
+    ofstream outfile;
+    string path=BrowseFolder("D:'\'");
+    outfile.open(path+"\\alinear"+tipoalinear+".txt", fstream::in | fstream::out | fstream::trunc);
+
+    if (myfile.is_open())
+    {
+        unsigned max_size = 0;
+        while ( getline (myfile,line) ){
+            if ( max_size < line.size() ) max_size = line.size();
+        }
+        //limpiar
+        myfile.clear();
+        myfile.seekg( 0 , ios_base::beg );  // rewind
 
 
+        while ( getline (myfile,line) )
+        {
+            auto posini=[](string stringvalues,int pos){
+                if(pos==1){
+                    for(int i=0; i<stringvalues.length();i++){
+                        if(stringvalues[i]!=' '){
+                            return  i;
+                        }
+                    }
+                }
+                if(pos==2){
+                    for(int i=stringvalues.length()-1; i>=0;i--){
+                        if(stringvalues[i]!=' '){
+                            return  i;
+                        }
+                    }
+                }
+            };
+            int inichar=posini(line,1);
+            int finish=posini(line,2);
+            line=line.substr(inichar,finish-inichar+1);
+
+
+            if(line.size()==max_size){
+                outfile << line << '\n';
+                cout<<line<<"\n";
+            }
+            else{
+                unsigned need_space = max_size - line.size();
+               // string temp_line;
+                if(opcion==1){
+                    while( need_space-- ){
+                        line.insert(0," ");
+                    }
+                    //temp_line+=line;
+                }
+                if(opcion==2){
+                    //temp_line+=line;
+                    while( need_space-- ){
+                        //temp_line +=" ";
+                        line.push_back(' ');
+                    }
+                }
+                if(opcion==3){
+                    while( need_space-- ){
+                        if(need_space%2==0){
+                            line.push_back(' ');
+                        }else{
+                            line.insert(0," ");
+                        }
+                    }
+                }
+                outfile << line << '\n';
+                cout  << line << '\n';
+            }
+        }
+        myfile.close();
+        outfile.close();
+        cout<<"\n";
+    }
+    else cout << "Unable to open file";
+}
 string GetFileGraphWindows(){
     char filename[ MAX_PATH ];
     OPENFILENAME ofn;
@@ -169,8 +280,30 @@ string GetFileGraphWindows(){
         }
     }
 }
-
-
+void BuscarPalabra(string ruta,string palabra){
+    ifstream myfile( ruta );
+    unsigned max_size = 0;
+    string line;
+    number linea=0;
+    number pal=0;
+    if (myfile.is_open()) {
+        while ( getline (myfile,line) )
+        {
+            string word;
+            stringstream s(line);
+            while (s>>word){
+                if(palabra==word){
+                    cout<<"Linea: "<<linea+1<<", Palabra:"<<pal++<<endl;
+                }
+                pal++;
+            }
+            linea++;
+        }
+        myfile.close();
+    }else{
+        cout << "Unable to open file";
+    }
+}
 int main() {
     //string ruta="../example.txt";
     //PrintText(ruta);
@@ -186,8 +319,8 @@ int main() {
         //cout<<"Texto Seleccionado: "<<ruta<<"\n";
         cout << "1. Leer Archivo" << "\n";
         cout << "2. Justificar" << "\n";
-        cout << "3. Alinear texto a la izquierda" << "\n";
-        cout << "4. Alinear texto a la derecha" << "\n";
+        cout << "3. Alinear texto a la derecha" << "\n";
+        cout << "4. Alinear texto a la izquierda" << "\n";
         cout << "5. Centrar Text" << "\n";
         cout << "6. Buscar una palabra" << "\n";
         cout << "7. Reemplazar una palabra" << "\n";
@@ -208,6 +341,25 @@ int main() {
             case 2:
                 ruta=GetFileGraphWindows();
                 justificar(ruta);
+                break;
+            case 3:
+                ruta=GetFileGraphWindows();
+                alinear(ruta,1);
+                break;
+            case 4:
+                ruta=GetFileGraphWindows();
+                alinear(ruta,2);
+                break;
+            case 5:
+                ruta=GetFileGraphWindows();
+                alinear(ruta,3);
+                break;
+            case 6:
+                string palabra;
+                cout<<"Ingrese palabra para buscar: ";
+                cin>>palabra;
+                ruta=GetFileGraphWindows();
+                BuscarPalabra(ruta,palabra);
                 break;
         }
     }
