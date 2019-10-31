@@ -103,12 +103,13 @@ void CArchivo::Justificar(){
                     }else {
                         temp_line += temp2;
                     }
+                    if(sobrantes!=0){
+                        temp_line +=" ";
+                        sobrantes--;
+                    }
                     for (number i=0;i<per_espace;i++){
                         temp_line +=" ";
-                        if(sobrantes!=0){
-                            temp_line +=" ";
-                            sobrantes--;
-                        }
+
                     }
                     newcontadot++;
                 }
