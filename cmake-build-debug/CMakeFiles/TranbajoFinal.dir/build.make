@@ -69,29 +69,29 @@ CMakeFiles/TranbajoFinal.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TranbajoFinal.dir/main.cpp.s"
 	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\UTEC\Ciclo 2\CS\TranbajoFinal\main.cpp" -o CMakeFiles\TranbajoFinal.dir\main.cpp.s
 
-CMakeFiles/TranbajoFinal.dir/CTexto.cpp.obj: CMakeFiles/TranbajoFinal.dir/flags.make
-CMakeFiles/TranbajoFinal.dir/CTexto.cpp.obj: ../CTexto.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\UTEC\Ciclo 2\CS\TranbajoFinal\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TranbajoFinal.dir/CTexto.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\TranbajoFinal.dir\CTexto.cpp.obj -c "D:\UTEC\Ciclo 2\CS\TranbajoFinal\CTexto.cpp"
+CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.obj: CMakeFiles/TranbajoFinal.dir/flags.make
+CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.obj: ../CArchivo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\UTEC\Ciclo 2\CS\TranbajoFinal\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.obj"
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\TranbajoFinal.dir\CArchivo.cpp.obj -c "D:\UTEC\Ciclo 2\CS\TranbajoFinal\CArchivo.cpp"
 
-CMakeFiles/TranbajoFinal.dir/CTexto.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TranbajoFinal.dir/CTexto.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\UTEC\Ciclo 2\CS\TranbajoFinal\CTexto.cpp" > CMakeFiles\TranbajoFinal.dir\CTexto.cpp.i
+CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.i"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\UTEC\Ciclo 2\CS\TranbajoFinal\CArchivo.cpp" > CMakeFiles\TranbajoFinal.dir\CArchivo.cpp.i
 
-CMakeFiles/TranbajoFinal.dir/CTexto.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TranbajoFinal.dir/CTexto.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\UTEC\Ciclo 2\CS\TranbajoFinal\CTexto.cpp" -o CMakeFiles\TranbajoFinal.dir\CTexto.cpp.s
+CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.s"
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\UTEC\Ciclo 2\CS\TranbajoFinal\CArchivo.cpp" -o CMakeFiles\TranbajoFinal.dir\CArchivo.cpp.s
 
 # Object files for target TranbajoFinal
 TranbajoFinal_OBJECTS = \
 "CMakeFiles/TranbajoFinal.dir/main.cpp.obj" \
-"CMakeFiles/TranbajoFinal.dir/CTexto.cpp.obj"
+"CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.obj"
 
 # External object files for target TranbajoFinal
 TranbajoFinal_EXTERNAL_OBJECTS =
 
 TranbajoFinal.exe: CMakeFiles/TranbajoFinal.dir/main.cpp.obj
-TranbajoFinal.exe: CMakeFiles/TranbajoFinal.dir/CTexto.cpp.obj
+TranbajoFinal.exe: CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.obj
 TranbajoFinal.exe: CMakeFiles/TranbajoFinal.dir/build.make
 TranbajoFinal.exe: CMakeFiles/TranbajoFinal.dir/linklibs.rsp
 TranbajoFinal.exe: CMakeFiles/TranbajoFinal.dir/objects1.rsp

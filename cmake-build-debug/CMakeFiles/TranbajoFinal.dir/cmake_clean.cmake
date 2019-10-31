@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/TranbajoFinal.dir/main.cpp.obj"
-  "CMakeFiles/TranbajoFinal.dir/CTexto.cpp.obj"
+  "CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.obj"
   "TranbajoFinal.pdb"
   "TranbajoFinal.exe"
   "TranbajoFinal.exe.manifest"

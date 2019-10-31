@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+D:/UTEC/Ciclo 2/CS/TranbajoFinal/CArchivo.h
+iostream
+-
+fstream
+-
+string
+-
+windows.h
+-
+shlobj.h
+-
+sstream
+-
+algorithm
+-
+
 D:/UTEC/Ciclo 2/CS/TranbajoFinal/main.cpp
 iostream
 -
@@ -21,4 +37,6 @@ sstream
 -
 algorithm
 -
+CArchivo.h
+D:/UTEC/Ciclo 2/CS/TranbajoFinal/CArchivo.h
 

@@ -3,4 +3,4 @@ project(TranbajoFinal)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(TranbajoFinal main.cpp CTexto.h CTexto.cpp)
+add_executable(TranbajoFinal main.cpp CArchivo.cpp CArchivo.h)

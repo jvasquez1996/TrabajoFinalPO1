@@ -122,32 +122,32 @@ TranbajoFinal/fast:
 	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/build
 .PHONY : TranbajoFinal/fast
 
-CTexto.obj: CTexto.cpp.obj
+CArchivo.obj: CArchivo.cpp.obj
 
-.PHONY : CTexto.obj
+.PHONY : CArchivo.obj
 
 # target to build an object file
-CTexto.cpp.obj:
-	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/CTexto.cpp.obj
-.PHONY : CTexto.cpp.obj
+CArchivo.cpp.obj:
+	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.obj
+.PHONY : CArchivo.cpp.obj
 
-CTexto.i: CTexto.cpp.i
+CArchivo.i: CArchivo.cpp.i
 
-.PHONY : CTexto.i
+.PHONY : CArchivo.i
 
 # target to preprocess a source file
-CTexto.cpp.i:
-	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/CTexto.cpp.i
-.PHONY : CTexto.cpp.i
+CArchivo.cpp.i:
+	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.i
+.PHONY : CArchivo.cpp.i
 
-CTexto.s: CTexto.cpp.s
+CArchivo.s: CArchivo.cpp.s
 
-.PHONY : CTexto.s
+.PHONY : CArchivo.s
 
 # target to generate assembly for a file
-CTexto.cpp.s:
-	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/CTexto.cpp.s
-.PHONY : CTexto.cpp.s
+CArchivo.cpp.s:
+	$(MAKE) -f CMakeFiles\TranbajoFinal.dir\build.make CMakeFiles/TranbajoFinal.dir/CArchivo.cpp.s
+.PHONY : CArchivo.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -185,9 +185,9 @@ help:
 	@echo ... TranbajoFinal
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... CTexto.obj
-	@echo ... CTexto.i
-	@echo ... CTexto.s
+	@echo ... CArchivo.obj
+	@echo ... CArchivo.i
+	@echo ... CArchivo.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
