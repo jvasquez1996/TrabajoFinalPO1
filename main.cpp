@@ -10,7 +10,7 @@ typedef int number;
 typedef bool boleano;
 typedef  string texto;
 
-static int CALLBACK BrowseCallbackProc(HWND hwnd,UINT uMsg, LPARAM lParam, LPARAM lpData)
+static number CALLBACK BrowseCallbackProc(HWND hwnd,UINT uMsg, LPARAM lParam, LPARAM lpData)
 {
 
     if(uMsg == BFFM_INITIALIZED)
@@ -22,7 +22,26 @@ static int CALLBACK BrowseCallbackProc(HWND hwnd,UINT uMsg, LPARAM lParam, LPARA
 
     return 0;
 }
-string BrowseFolder(string saved_path)
+number positionchar (texto stringvalues,number pos)
+{
+    if(pos==1){
+        for(int i=0; i<stringvalues.length();i++){
+            if(stringvalues[i]!=' '){
+                return  i;
+            }
+        }
+    }
+    if(pos==2){
+        for(int i=stringvalues.length()-1; i>=0;i--){
+            if(stringvalues[i]!=' '){
+                return  i;
+            }
+        }
+    }
+
+
+}
+texto BrowseFolder(texto saved_path)
 {
     TCHAR path[MAX_PATH];
 
@@ -55,7 +74,7 @@ string BrowseFolder(string saved_path)
 
     return "";
 }
-void PrintText( string ruta){
+void PrintText( texto ruta){
     string line;
     ifstream myfile (ruta);
     if (myfile.is_open())
@@ -69,15 +88,13 @@ void PrintText( string ruta){
     }
     else cout << "Unable to open file";
 }
-void justificar(string ruta){
-
+void justificar(texto ruta){
     ifstream myfile( ruta );
     unsigned max_size = 0;
-    string line;
+    texto line;
     ofstream outfile;
-    string path=BrowseFolder("D:'\'");
+    texto path=BrowseFolder("D:'\'");
     outfile.open(path+"\\justificar.txt", fstream::in | fstream::out | fstream::trunc);
-
     if (myfile.is_open())
     {
         unsigned max_size = 0;
@@ -91,25 +108,8 @@ void justificar(string ruta){
 
         while ( getline (myfile,line) )
         {
-            auto posini=[](string stringvalues,int pos){
-                if(pos==1){
-                    for(int i=0; i<stringvalues.length();i++){
-                        if(stringvalues[i]!=' '){
-                            return  i;
-                        }
-                    }
-                }
-                if(pos==2){
-                    for(int i=stringvalues.length()-1; i>=0;i--){
-                        if(stringvalues[i]!=' '){
-                            return  i;
-                        }
-                    }
-                }
-            };
-
-            int inichar=posini(line,1);
-            int finish=posini(line,2);
+            number inichar=positionchar(line,1);
+            number finish=positionchar(line,2);
             line=line.substr(inichar,finish-inichar+1);
 
             if(line.size()==max_size){
@@ -119,25 +119,44 @@ void justificar(string ruta){
             }
             else if (line.size()>70){
                 //mayores a 70 caracteres pero diferente de el max.
-
-                unsigned need_space = max_size - line.size();
-                unsigned count_space = count( line.begin(), line.end(), ' ' );
-
                 istringstream iss( line );
-
                 string temp_line;
-                while( need_space-- && count_space-- ){
-                    string temp;
-                    iss >> temp;
-                    temp_line +=  temp + "  ";
+                string new_text;
+                number contador=0;
+                number newcontadot=0;
+                string temp;
+                while (iss>>temp){
+                    new_text+=temp+" ";
+                    contador++;
                 }
-                iss.get();
-                temp_line.append(  istreambuf_iterator<char>( iss ), istreambuf_iterator<char>() );
+                number need_space = max_size - (new_text.size()-1);
+                number count_space = (contador-1);
+                number per_espace=need_space/count_space;
+                number sobrantes=need_space%count_space;
+
+                string temp2;
+                istringstream iss2(line);
+                while (iss2>>temp2){
+                    if(newcontadot!=contador){
+                        temp_line +=  temp2+" ";
+                    }else {
+                        temp_line += temp2;
+                    }
+                    for (number i=0;i<per_espace;i++){
+                        temp_line +=" ";
+                        if(sobrantes!=0){
+                            temp_line +=" ";
+                            sobrantes--;
+                        }
+                    }
+                    newcontadot++;
+                }
+
                 outfile << temp_line << '\n';
                 cout  << temp_line << '\n';
+
            }
             else{
-                //menores de 70 caracteres
                 outfile << line << '\n';
                 cout<<line<<"\n";
             }
@@ -148,8 +167,8 @@ void justificar(string ruta){
     }
     else cout << "Unable to open file";
 }
-void alinear(string ruta ,int opcion){
-    string tipoalinear="";
+void alinear(texto ruta ,number opcion){
+    texto tipoalinear="";
     if(opcion==1){
         tipoalinear="derecha";
     }else if(opcion==2){
@@ -159,9 +178,9 @@ void alinear(string ruta ,int opcion){
     }
     ifstream myfile( ruta );
     unsigned max_size = 0;
-    string line;
+    texto line;
     ofstream outfile;
-    string path=BrowseFolder("D:'\'");
+    texto path=BrowseFolder("D:'\'");
     outfile.open(path+"\\alinear"+tipoalinear+".txt", fstream::in | fstream::out | fstream::trunc);
 
     if (myfile.is_open())
@@ -177,27 +196,9 @@ void alinear(string ruta ,int opcion){
 
         while ( getline (myfile,line) )
         {
-            auto posini=[](string stringvalues,int pos){
-                if(pos==1){
-                    for(int i=0; i<stringvalues.length();i++){
-                        if(stringvalues[i]!=' '){
-                            return  i;
-                        }
-                    }
-                }
-                if(pos==2){
-                    for(int i=stringvalues.length()-1; i>=0;i--){
-                        if(stringvalues[i]!=' '){
-                            return  i;
-                        }
-                    }
-                }
-            };
-            int inichar=posini(line,1);
-            int finish=posini(line,2);
+            number inichar=positionchar(line,1);
+            number finish=positionchar(line,2);
             line=line.substr(inichar,finish-inichar+1);
-
-
             if(line.size()==max_size){
                 outfile << line << '\n';
                 cout<<line<<"\n";
@@ -237,7 +238,7 @@ void alinear(string ruta ,int opcion){
     }
     else cout << "Unable to open file";
 }
-string GetFileGraphWindows(){
+texto GetFileGraphWindows(){
     char filename[ MAX_PATH ];
     OPENFILENAME ofn;
     ZeroMemory( &filename, sizeof( filename ) );
@@ -252,13 +253,11 @@ string GetFileGraphWindows(){
 
     if (GetOpenFileNameA( &ofn ))
     {
-        //std::cout << "You chose the file \"" << filename << "\"\n";
+
         return filename;
     }
     else
     {
-        // All this stuff below is to tell you exactly how you messed up above.
-        // Once you've got that fixed, you can often (not always!) reduce it to a 'user cancelled' assumption.
         switch (CommDlgExtendedError())
         {
             case CDERR_DIALOGFAILURE   : std::cout << "CDERR_DIALOGFAILURE\n";   break;
@@ -280,7 +279,7 @@ string GetFileGraphWindows(){
         }
     }
 }
-void BuscarPalabra(string ruta,string palabra){
+void BuscarPalabra(texto ruta,texto palabra){
     ifstream myfile( ruta );
     unsigned max_size = 0;
     string line;
@@ -300,23 +299,118 @@ void BuscarPalabra(string ruta,string palabra){
             linea++;
         }
         myfile.close();
+
     }else{
         cout << "Unable to open file";
     }
 }
+void replazar(texto ruta, texto remplazo,texto nueva){
+    ifstream myfile( ruta );
+    unsigned max_size = 0;
+    string line;
+    ofstream outfile;
+    texto path=BrowseFolder("D:'\'");
+    outfile.open(path+"\\remplazar.txt", fstream::in | fstream::out | fstream::trunc);
+    if (myfile.is_open()) {
+        while ( getline (myfile,line) )
+        {
+            while(line.find(remplazo)!=string::npos){
+                 line.replace(line.find(remplazo),remplazo.length(),nueva);
+            }
+            cout  << line << '\n';
+            outfile << line << '\n';
+        }
+        myfile.close();
+        outfile.close();
+        cout<<"\n";
+
+    }else{
+        cout << "Unable to open file";
+    }
+}
+void contarpalabra(texto ruta,texto palabra){
+    ifstream myfile( ruta );
+    unsigned max_size = 0;
+    texto line;
+    number contador=0;
+    if (myfile.is_open()) {
+        while ( getline (myfile,line) )
+        {
+            string word;
+            stringstream s(line);
+            while (s>>word){
+                if(palabra==word){
+                   contador++;
+                }
+            }
+
+        }
+        cout<<"# de veces palabra "<<palabra<< ": "<<contador<<endl;
+        myfile.close();
+
+    }else{
+        cout << "Unable to open file";
+    }
+}
+void cifrado(texto ruta,number opcion){
+    texto type=(opcion==1?"encriptado":"desencriptado");
+    texto ABC ="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    texto abc="abcdefghijklmnopqrstuvwxyz";
+    number n=5;
+    ifstream myfile( ruta );
+    texto line;
+    ofstream outfile;
+    texto path=BrowseFolder("D:'\'");
+    outfile.open(path+"\\"+type+".txt", fstream::in | fstream::out | fstream::trunc);
+    if (myfile.is_open()) {
+        while ( getline (myfile,line) ) {
+
+            switch (opcion) {
+                case 1:
+                    for (number i = 0; line[i]; i++) {
+                        if (abc.find(line[i]) <= 26) {
+                            //cout<<abc.find(texto[i])<<endl;
+                            line[i] = abc[(abc.find(line[i]) + n) % 26];
+                        }
+                        if (ABC.find(line[i]) <= 26) {
+                            //cout<<ABC.find(texto[i])<<endl;
+                            line[i] = ABC[(ABC.find(line[i]) + n) % 26];
+                        }
+                    }
+                    break;
+                case 2:
+                    for (number i = 0; line[i]; i++) {
+                        if (abc.find(line[i]) <= 26) {
+                            //cout<<abc.find(texto[i])<<endl;
+                            line[i] = abc[(abc.find(line[i]) - n + 26) % 26];
+                        }
+                        if (ABC.find(line[i]) <= 26) {
+                            //cout<<ABC.find(texto[i])<<endl;
+                            line[i] = ABC[(ABC.find(line[i]) - n + 26) % 26];
+                        }
+                    }
+                    break;
+            }
+            cout  << line << '\n';
+            outfile << line << '\n';
+        }
+        myfile.close();
+        outfile.close();
+        cout<<"\n";
+        }
+    else{
+        cout << "Unable to open file";
+    }
+
+}
+
 int main() {
-    //string ruta="../example.txt";
-    //PrintText(ruta);
     number opcion = -1;
     boleano encriptado=false;
-    //Primero debo seleecionar el archivo.
     texto ruta="";
-    //texto path = BrowseFolder("D:'\'");
-    //cout<<path;
 
     while(opcion!=0) {
         cout << "Menu de Acciones: " << "\n";
-        //cout<<"Texto Seleccionado: "<<ruta<<"\n";
         cout << "1. Leer Archivo" << "\n";
         cout << "2. Justificar" << "\n";
         cout << "3. Alinear texto a la derecha" << "\n";
@@ -325,18 +419,38 @@ int main() {
         cout << "6. Buscar una palabra" << "\n";
         cout << "7. Reemplazar una palabra" << "\n";
         cout << "8. Contar la cantidad de veces que aparece una palabra" << "\n";
-        if(encriptado){
-            cout << "9. Encriptar" << "\n";
-        }else{
-            cout << "9. Desencriptar" << "\n";
-        }
+        cout << "9. Encriptar" << "\n";
+        cout << "10. Desencriptar" << "\n";
         cout << "0. Salir" << "\n";
         cout<<"Seleccione opcion: "<<"\n";
         cin>>opcion;
+        texto remplazo,nueva;
         switch (opcion){
+            case 9:
+                ruta=GetFileGraphWindows();
+                cifrado(ruta,1);
+                break;
+            case 10:
+                ruta=GetFileGraphWindows();
+                cifrado(ruta,2);
+                break;
             case 1 :
                 ruta=GetFileGraphWindows();
                 PrintText(ruta);
+                break;
+            case 7:
+                ruta=GetFileGraphWindows();
+                cout<<"Ingrese palabra a replazar: ";
+                cin>>remplazo;
+                cout<<"Ingrese palabra palabra nueva: ";
+                cin>>nueva;
+                replazar(ruta,remplazo,nueva);
+                break;
+            case 8:
+                ruta=GetFileGraphWindows();
+                cout<<"Ingrese palabra a contar: ";
+                cin>>nueva;
+                contarpalabra(ruta,nueva);
                 break;
             case 2:
                 ruta=GetFileGraphWindows();
@@ -355,10 +469,10 @@ int main() {
                 alinear(ruta,3);
                 break;
             case 6:
-                string palabra;
+                ruta=GetFileGraphWindows();
+                texto palabra;
                 cout<<"Ingrese palabra para buscar: ";
                 cin>>palabra;
-                ruta=GetFileGraphWindows();
                 BuscarPalabra(ruta,palabra);
                 break;
         }
