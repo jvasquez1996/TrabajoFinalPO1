@@ -31,7 +31,7 @@ texto GetFileGraphWindows(){
     ofn.lpstrFilter  = "Text Files\0*.txt\0Any File\0*.*\0";
     ofn.lpstrFile    = filename;
     ofn.nMaxFile     = MAX_PATH;
-    ofn.lpstrTitle   = "Select a File, yo!";
+    ofn.lpstrTitle   = "Seleccione un Archivo.";
     ofn.Flags        = OFN_DONTADDTORECENT | OFN_FILEMUSTEXIST;
 
     if (GetOpenFileNameA( &ofn ))

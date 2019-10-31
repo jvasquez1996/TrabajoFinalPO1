@@ -68,7 +68,6 @@ void CArchivo::Justificar(){
         myfile.clear();
         myfile.seekg( 0 , ios_base::beg );  // rewind
 
-
         while ( getline (myfile,line) )
         {
             number inichar=CArchivo::PositionChar(line,1);
