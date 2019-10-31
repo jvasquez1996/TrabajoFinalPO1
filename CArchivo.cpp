@@ -78,7 +78,7 @@ void CArchivo::Justificar(){
                 outfile << line << '\n';
                 cout<<line<<'\n';
             }
-            else if (line.size()>70){
+            else{
                 //mayores a 70 caracteres pero diferente de el max.
                 istringstream iss( line );
                 string temp_line;
@@ -118,10 +118,7 @@ void CArchivo::Justificar(){
                 cout  << temp_line << '\n';
 
             }
-            else{
-                outfile << line << '\n';
-                cout<<line<<"\n";
-            }
+
         }
         myfile.close();
         outfile.close();

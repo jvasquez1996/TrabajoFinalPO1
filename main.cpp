@@ -133,11 +133,11 @@ int main() {
             case 7:
                 // Reemplazar una palabra
                 ruta=GetFileGraphWindows();
+                outruta=BrowseFolder("D:'\'");
                 cout<<"Ingrese palabra a replazar: ";
                 cin>>remplazo;
                 cout<<"Ingrese palabra palabra nueva: ";
                 cin>>nueva;
-                outruta=BrowseFolder("D:'\'");
                 archivo.setRuta(ruta);
                 archivo.setOutruta(outruta);
                 archivo.Remplazar(remplazo,nueva);
